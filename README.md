@@ -1,4 +1,4 @@
-# 🎗️ Donation Seva - MERN Stack Donation Management System
+# 🎗️ Donation Seva
 
 A modern, full-stack donation management platform built with **MongoDB**, **Express.js**, **React**, and **Node.js**. Features Apple-inspired minimal design, secure authentication, and real-time donation tracking.
 
