@@ -7,6 +7,15 @@ A modern, full-stack donation management platform built with **MongoDB**, **Expr
 ![Node.js](https://img.shields.io/badge/Node.js-16.0+-green)
 ![MongoDB](https://img.shields.io/badge/Database-MongoDB-brightgreen)
 
+## 🚀 Quick Test
+
+**Test the application immediately with pre-configured credentials:**
+
+```
+Email: test@test.com
+Password: password123
+```
+
 ## ✨ Features
 
 ### 🔐 **Authentication System**
