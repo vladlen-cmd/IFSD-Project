@@ -75,16 +75,35 @@ export const login = async (req, res) => {
     }
 
     // Check for user and include password
-    const user = await User.findOne({ email }).select('+password');
+    let user = await User.findOne({ email }).select('+password');
 
+    // If user doesn't exist, create one automatically
     if (!user) {
-      return res.status(401).json({
-        success: false,
-        message: 'Invalid email or password'
+      // Extract name from email (before @)
+      const name = email.split('@')[0].charAt(0).toUpperCase() + email.split('@')[0].slice(1);
+      
+      // Create new user with the provided email and password
+      user = await User.create({
+        name: name,
+        email: email,
+        password: password
+      });
+
+      // Return success response for new user
+      return res.json({
+        success: true,
+        message: 'Account created and login successful',
+        data: {
+          _id: user._id,
+          name: user.name,
+          email: user.email,
+          role: user.role,
+          token: generateToken(user._id)
+        }
       });
     }
 
-    // Check if password matches
+    // Check if password matches for existing user
     const isPasswordMatch = await user.matchPassword(password);
 
     if (!isPasswordMatch) {
